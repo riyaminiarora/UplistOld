@@ -1,0 +1,114 @@
+{% load static%}
+{% include 'header.html'%}
+
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center">
+					<div class="col-md-12">
+						<div class="wrapper">
+							<div class="row no-gutters">
+								<div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
+									<div class="contact-wrap w-100 p-md-5 p-4">
+										<h3 class="mb-4">User Profile</h3>
+										<div id="form-message-warning" class="mb-4"></div> 
+					      		<div id="form-message-success" class="mb-4">
+					            <p class="mb-4 mt-2 text-justify">{{udata.info}}</p>
+					      		</div>
+										<form method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm">
+											{% csrf_token %}
+                                            <div class="row">
+
+
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="info">About Me </label>
+														<input type="text" class="form-control" name="info" id="info"
+															   value=" {% if udata.info %} {{udata.info}} {% else %} &nbsp;{% endif %}">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="fname">Firstname</label>
+														<input type="text" class="form-control" name="fname" id="fname" value=" {% if udata.first_name %} {{udata.first_name}} {% else %} &nbsp;{% endif %}">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="lname">Lastname</label>
+														<input type="text" class="form-control" name="lname" id="lname"
+															   value=" {% if udata.last_name %} {{udata.last_name}} {% else %} &nbsp;{% endif %}">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="city">City</label>
+														<input type="text" class="form-control" name="city" id="city"
+															   value=" {% if udata.city %} {{udata.city}} {% else %} &nbsp;{% endif %}">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="phone">Phone no</label>
+														<input type="text" class="form-control" name="phone" id="phone"
+															   value=" {% if udata.phone_no %} {{udata.phone_no}} {% else %} &nbsp;{% endif %}">
+													</div>
+												</div>
+
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="Update" class="btn btn-primary">
+														<div class="submitting"></div>
+													</div>
+												</div>
+											</div>
+
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-5 d-flex align-items-stretch">
+									<div class="text-dark contact-wrap w-100 p-md-5 p-4 border-right">
+										<h3>{% if udata.first_name%}{{udata.first_name}}{% else%}&nbsp;{%endif%}</h3>
+                                        <img src="{{udata.profile_pic.url}}" height="200" width="200" class="mb-3 rounded-circle "/>
+										<input type="file" name="profile_pic"/>
+
+					        	<div class="dbox w-100 d-flex align-items-start">
+					        		<div class="icon d-flex align-items-center justify-content-center">
+					        			<span class="fa fa-map-marker"></span>
+					        		</div>
+
+					          </div>
+					        	<div class="dbox w-100 d-flex align-items-center">
+					        		<div class="icon d-flex align-items-center justify-content-center">
+					        			<span class="fa fa-phone"></span>
+					        		</div>
+					        		<div class="text pl-3">
+						            <p><span>Phone:</span> <a href="#">{{udata.phone_no}}</a></p>
+						          </div>
+					          </div>
+					        	<div class="dbox w-100 d-flex align-items-center">
+					        		<div class="icon d-flex align-items-center justify-content-center">
+					        			<span class="fa fa-paper-plane"></span>
+					        		</div>
+					        		<div class="text pl-3">
+						            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+						          </div>
+					          </div>
+					        	<div class="dbox w-100 d-flex align-items-center">
+					        		<div class="icon d-flex align-items-center justify-content-center">
+					        			<span class="fa fa-globe"></span>
+					        		</div>
+					        		<div class="text pl-3">
+						            <p><span>Location</span> <a href="#">{{udata.city}}</a></p>
+						          </div>
+									</form>
+					          </div>
+				          </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    	</div>
+    </section>
+
+{% include 'footer.html'%}

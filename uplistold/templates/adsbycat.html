@@ -1,0 +1,75 @@
+{%include 'header.html'%}
+<style>
+.catimage
+{
+	height:90px;
+	width:90px;
+}
+</style>
+    <div class="hero-wrap">
+
+	  </div>
+		
+		
+   
+
+   
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2>Trending Ads</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+		{% for ad in adbycat%}
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a  href="/detail/{{ad.id}}" class="block-20 rounded" style="background-image: url({{ad.ad_image1.url}});">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div>January 30, 2020</div>
+                  <div>Admin</div>
+                  <div><span class="meta-chat"><span class="fa fa-comment"></span> 3</span></div>
+                </div>
+                <h3 class="heading"><a href="/detail/{{ad.id}}">{{ad.ad_title}}</a></h3>
+                <p >Rs.{{ad.ad_price}} <span class="pull-right mr-2">{{ad.ad_location}}</span></p>
+              </div>
+            </div>
+          </div>
+         {%endfor %}
+          
+        </div>
+      </div>
+    </section>
+		
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+      <div class="container">
+      	<div class="row">
+	      	<div class="col-md-12">
+	      		<div class="bg-secondary w-100 rounded p-4">
+	        		<div class="row">
+			          <div class="col-md-7 d-flex align-items-center">
+			            <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 18px;">Subcribe for our weekly tips</h2>
+			          </div>
+			          <div class="col-md-5 d-flex align-items-center">
+			            <form action="#" class="subscribe-form">
+			              <div class="form-group d-flex">
+			                <input type="text" class="form-control" placeholder="Enter email address">
+			                <input type="submit" value="Subscribe" class="submit px-3">
+			              </div>
+			            </form>
+			          </div>
+		          </div>
+			      </div>
+			    </div>
+			  </div>
+      </div>
+    </section>
+
+   
+
+    {%include 'footer.html'%}

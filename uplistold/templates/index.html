@@ -1,0 +1,173 @@
+{%include 'header.html'%}
+<style>
+.catimage
+{
+	height:90px;
+	width:90px;
+}
+.pagination li
+{
+	padding:5px 15px;
+	//background-color:#eee;
+	border:1px solid #8fd0d2 ;
+	color:#8fd0d2;
+
+
+}
+.pagination li a
+{color:#8fd0d2;
+}
+.active
+{
+	background-color:#8fd0d2;
+	color:#fff !important;
+}
+</style>
+    <div class="hero-wrap">
+
+	  </div>
+		
+		<section class="intro py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="intro-box w-100 d-flex">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="fa fa-phone"></span>
+							</div>
+							<div class="text pl-3">
+								<h4 class="mb-0">Call us: +12 234 456 7890</h4>
+								<span> 198 West 21th Street, Suite 721 New York NY 10016</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="intro-box w-100 d-flex">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="fa fa-clock-o"></span>
+							</div>
+							<div class="text pl-3">
+								<h4 class="mb-0">Opening Hours</h4>
+								<span>Mon - Sat 7:00 AM - 8:00 PM / Sundays closed</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="intro-box w-100">
+							<p class="mb-0"><a href="#" class="btn btn-primary">Make an Appointment</a></p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</section>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2>We can help you in different situations</h2>
+            <span class="subheading">We offer Services</span>
+          </div>
+        </div>
+    		<div class="row">
+         
+         {% for i in catdata %}
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="  text-center">
+            		<img class="catimage mx-auto" src="{{i.cat_image.url}}"/>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <a href="/adsbycat/{{i.id}}"><h3 class="heading">{{i.cat_name}}</h3></a>
+                
+              </div>
+            </div>      
+          </div>
+		  {%endfor%}
+        </div>
+    	</div>
+    </section>
+   
+
+   
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2>Trending Ads</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+		{% for ad in addata%}
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a  href="/detail/{{ad.id}}" class="block-20 rounded" style="background-image: url({{ad.ad_image1.url}});">
+              </a>
+              <div class="text mt-3">
+              	<div class="meta mb-2">
+                  <div>January 30, 2020</div>
+                  <div>Admin</div>
+                  <div><span class="meta-chat"><span class="fa fa-comment"></span> 3</span></div>
+                </div>
+                <h3 class="heading"><a href="/detail/{{ad.id}}">{{ad.ad_title}}</a></h3>
+                <p >Rs.{{ad.ad_price}} <span class="pull-right mr-2">{{ad.ad_location}}</span></p>
+              </div>
+            </div>
+          </div>
+         {%endfor %}
+
+        </div>
+		{% if addata.has_other_pages %}
+  <ul class="pagination text-align-center justify-content-center">
+    {% if addata.has_previous %}
+      <li><a href="?page={{ addata.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in addata.paginator.page_range %}
+      {% if addata.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if addata.has_next %}
+      <li><a href="?page={{ addata.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+      </div>
+
+    </section>
+		
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+      <div class="container">
+      	<div class="row">
+	      	<div class="col-md-12">
+	      		<div class="bg-secondary w-100 rounded p-4">
+	        		<div class="row">
+			          <div class="col-md-7 d-flex align-items-center">
+			            <h2 class="mb-3 mb-sm-0" style="color:black; font-size: 18px;">Subcribe for our weekly tips</h2>
+			          </div>
+			          <div class="col-md-5 d-flex align-items-center">
+			            <form action="#" class="subscribe-form">
+			              <div class="form-group d-flex">
+			                <input type="text" class="form-control" placeholder="Enter email address">
+			                <input type="submit" value="Subscribe" class="submit px-3">
+			              </div>
+			            </form>
+			          </div>
+		          </div>
+			      </div>
+			    </div>
+			  </div>
+      </div>
+    </section>
+
+   
+
+    {%include 'footer.html'%}

@@ -1,0 +1,124 @@
+{% include 'header.html'%}
+<style>
+.img1
+{
+	height:130px;
+	width:130px;
+	margin-right:20px;
+}
+.ad-thumbnails
+{
+	margin-left:150px;
+}
+.title
+{
+	font-size:28px !important;
+}
+.item
+{
+ // height:260px;
+}
+</style>
+		
+		<section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 ftco-animate">
+
+              <p><img src="{{ad.ad_image1.url}}" alt="" class="img-fluid" style="width:570px;height:400px;"></p>
+			  <p class="ad-thumbnails"><img src="{{ad.ad_image2.url}}" alt="" class="img1"><img src="{{ad.ad_image3.url}}" alt="" class="img1"></p>
+              
+            
+           
+            
+            
+            <div class="about-author d-flex p-4 bg-light">
+              
+              <div class="desc">
+				<h5>Description:</h5>
+               <p>{{ad.ad_desc}}</p>
+              </div>
+            </div>
+
+
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-5 sidebar pl-lg-5 ftco-animate">
+              
+            <div class="sidebar-box ftco-animate">
+                <h3 class="mb-3 title">{{ad.ad_title}}</h3>
+				<h3>Rs.{{ad.ad_price}}</h3>
+				<p>Posted on: {{ad.ad_postedon}}</p>
+				<p> {{ad.ad_location}}</p>
+				<p>Posted by :{{ad.ad_postedby}}</p>
+
+            
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+            <div class="pt-5 ">
+              {% if request.user != ad.ad_postedby %}
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Send Message</h3>
+                <form  class="p-5 bg-light" action="/sendmessage/{{ad.id}}" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="subj">Subject *</label>
+                    <input type="text" class="form-control" id="subj" name="subject">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="6" class="form-control" name="message"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Send" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+              {%endif%}
+            </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+    <section class="ftco-section testimony-section bg-secondary">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
+            <h2>More Results in this Category</h2>
+
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+
+              {%for ad in relatedads%}
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <img src="{{ad.ad_image1.url}}" style="height:230px;width:300px;"/>
+                    <div class="d-flex align-items-center">
+                    	<div class="pl-3">
+		                    <p class="name">{{ad.ad_title}}</p>
+		                    <span class="position">Rs.{{ad.ad_price}}</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ {%include 'footer.html'%}

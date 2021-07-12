@@ -1,0 +1,60 @@
+{% load static%}
+{% include 'header.html'%}
+
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center">
+					<div class="col-md-12">
+						<div class="wrapper">
+							<div class="row no-gutters">
+								<div class="col-lg-8 col-md-7 mx-auto order-md-last d-flex align-items-stretch">
+									<div class="contact-wrap w-100 p-md-5 p-4">
+										<h3 class="mb-4 text-center">Change Password</h3>
+										<div id="form-message-warning" class="mb-4"></div> 
+     											{% if success%}
+												<div id="form-message-success" class="mb-4">
+													<p class="alert alert-success">{{success}}</p>
+												</div>
+												{% endif %}
+										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+											{% csrf_token %}
+                                            <div class="row">
+
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="oldpass">Old Password</label>
+														<input type="password" class="form-control" name="oldpass" id="oldpass" >
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="npass">New Password</label>
+														<input type="password" class="form-control" name="newpass" id="npass" >
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="cpass">Confirm Password</label>
+														<input type="password" class="form-control" name="cpassword" id="cpass" >
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="Submit" class="btn btn-primary">
+														<div class="submitting"></div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+    	</div>
+    </section>
+
+{% include 'footer.html'%}

@@ -1,0 +1,78 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uplistold</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  </head>
+  <body>
+
+    <div class="wrap">
+			<div class="container">
+				<div class="row justify-content-between">
+						<div class="col">
+							<p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+00 1234 567</a></p>
+						</div>
+						<div class="col d-flex justify-content-end">
+							<div class="social-media">
+				    		<p class="mb-0 d-flex">
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+				    		</p>
+			        </div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container-fluid ml-2">
+	    	<a class="navbar-brand" href="/">Uplist<span>old</span></a>
+	    	<form action="#" class="searchform order-sm-start order-lg-last">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+          </div>
+        </form>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav m-auto">
+
+				{% if user.is_authenticated %}
+	        	<li class="nav-item"><a href="/profile" class="nav-link">My Account</a></li>
+	        	<li class="nav-item"><a href="/changepass" class="nav-link">Change Password</a></li>
+	        	<li class="nav-item"><a href="/adpost" class="nav-link">Post Ad</a></li>
+	        	<li class="nav-item"><a href="/myads" class="nav-link">My Ads</a></li>
+	        	<li class="nav-item"><a href="/inbox" class="nav-link">Inbox</a></li>
+	        	<li class="nav-item"><a href="/outbox" class="nav-link">Outbox</a></li>
+	          	<li class="nav-item"><a href="/signout" class="nav-link">LogOut</a></li>
+				{% else %}
+
+				<li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+				<li class="nav-item"><a href="/signin" class="nav-link">SignIn</a></li>
+	          	<li class="nav-item"><a href="/signup" class="nav-link">SignUp</a></li>
+	          	<li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
+				{% endif %}
+
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>

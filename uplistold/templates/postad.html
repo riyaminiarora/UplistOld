@@ -1,0 +1,111 @@
+{% include 'header.html'%}
+
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center">
+					<div class="col-md-12">
+						<div class="wrapper">
+							<div class="row no-gutters">
+								<div class="col-lg-10 col-md-12 mx-auto order-md-last d-flex align-items-stretch">
+									<div class="contact-wrap w-100 p-md-5 p-4">
+										<h3 class="mb-4">Post Ad</h3>
+										<div id="form-message-warning" class="mb-4"></div> 
+
+										<form method="POST" id="contactForm" name="contactForm" class="contactForm" enctype="multipart/form-data">
+											 {% csrf_token %}
+											<div class="row">
+											<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="title">Title</label>
+														<input type="text" class="form-control" name="ad_title" id="title" placeholder="Title">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="desc">Description</label>
+														<textarea name="ad_desc" class="form-control" id="desc" cols="30" rows="6" placeholder="Description"></textarea>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="loc">Category</label>
+														<select class="form-control" name="ddlcat" id="loc">
+															<option>--Select Category--</option>
+
+															{% for i in categories%}
+																	<option value="{{i.id}}">{{i}}</option>
+															{%endfor%}
+
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="ddlloc">Location</label>
+														<select class="form-control" name="ddlloc" id="ddlloc">
+															<option>--Select Location--</option>
+
+															{% for i in locdata%}
+																	<option value="{{i.id}}">{{i}}</option>
+															{%endfor%}
+
+														</select>
+													</div>
+												</div>
+
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="ad_image1">Ad Image1</label>
+														<input type="file" class="form-control" name="ad_image1" id="ad_image1" placeholder="Email">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="ad_image2">Ad Image2</label>
+														<input type="file" class="form-control" name="ad_image2" id="ad_image2" placeholder="Subject">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="label" for="ad_image3">Ad Image3</label>
+														<input type="file" class="form-control" name="ad_image3" id="ad_image3" placeholder="Subject">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="ad_price">Price</label>
+														<input type="text" class="form-control" name="ad_price" id="ad_price" placeholder="Name">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="label" for="ad_phone">Phone</label>
+														<input type="text" class="form-control" name="ad_phone" id="ad_phone" placeholder="Subject">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="Post Ad" class="btn btn-primary">
+														<div class="submitting"></div>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+
+				          </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    	</div>
+    </section>
+
+
+
+
+  {%include 'footer.html'%}

@@ -1,0 +1,71 @@
+{% include 'header.html'%}
+{% load static%}
+		
+		<section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+
+
+
+
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">6 Messages Recieved</h3>
+              <ul class="comment-list">
+
+
+                {% for msg in messages%}
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="media/images/profile/default.png" style="height:70px;width:70px;" alt="Image placeholder">
+                    <h6>{{msg.sender}}</h6>
+                  </div>
+                  <div class="comment-body">
+
+                    <h3 class="text-primary">{{msg.ad_id}}</h3>
+                    <h6 >{{msg.sub}}</h6>
+                    <div class="meta">{{msg.posted_date}}</div>
+                    <p>{{msg.msg}}</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+                {% endfor %}
+
+              </ul>
+
+              
+
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="fa fa-search"></span>
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+              <div class="categories">
+                <h3>Categories</h3>
+                <li><a href="#">Career &amp; Business <span class="ion-ios-arrow-forward"></span></a></li>
+                <li><a href="#">Mental &amp; Physical Care <span class="ion-ios-arrow-forward"></span></a></li>
+                <li><a href="#">People &amp; Relationships <span class="ion-ios-arrow-forward"></span></a></li>
+                <li><a href="#">Life Coaching <span class="ion-ios-arrow-forward"></span></a></li>
+              </div>
+            </div>
+
+
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+
+ {% include 'footer.html'%}
